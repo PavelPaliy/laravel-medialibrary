@@ -186,6 +186,18 @@ class Filesystem
 
         return $targetFile;
     }
+    public function removeAllMediaFiles(Media $media): void
+    {
+        $path = parse_url($media->getUrl())['path'];
+        $this->removeFile($media, $path);
+        foreach ($media->generated_conversions as $key => $generated_conversion){
+            if($generated_conversion){
+                $path = parse_url($media->getUrl($key))['path'];
+                $this->removeFile($media, $path);
+            }
+        }
+
+    }
 
     public function removeAllFiles(Media $media): void
     {
