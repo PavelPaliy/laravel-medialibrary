@@ -64,6 +64,6 @@ class MediaObserver
         /** @var \Spatie\MediaLibrary\MediaCollections\Filesystem $filesystem */
         $filesystem = app(Filesystem::class);
 
-        $filesystem->removeAllFiles($media);
+        $filesystem->removeAllMediaFiles($media);
     }
 }
