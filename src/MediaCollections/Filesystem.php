@@ -188,14 +188,22 @@ class Filesystem
     }
     public function removeAllMediaFiles(Media $media): void
     {
-        $path = parse_url($media->getUrl())['path'];
-        $this->removeFile($media, $path);
-        foreach ($media->generated_conversions as $key => $generated_conversion){
-            if($generated_conversion){
-                $path = parse_url($media->getUrl($key))['path'];
-                $this->removeFile($media, $path);
+        $originalPath = $media->getPath();
+        $pathInfoOriginalPathArr = pathinfo($originalPath);
+        if(isset($pathInfoOriginalPathArr['dirname'])){
+            $dirName = $pathInfoOriginalPathArr['dirname'];
+            $this->removeFile($media, $originalPath);
+            foreach ($media->generated_conversions as $key => $generated_conversion){
+                if($generated_conversion){
+
+                    $path = parse_url($media->getUrl($key))['path'];
+                    $fileName = pathinfo($path, PATHINFO_BASENAME);
+                    $path = $dirName."/".$fileName;
+                    $this->removeFile($media, $path);
+                }
             }
         }
+
 
     }
 
