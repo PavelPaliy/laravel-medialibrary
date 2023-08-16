@@ -270,7 +270,7 @@ class FileAdder
         return $media;
     }
 
-    public function toMediaCollection(string $collectionName = 'default', string $diskName = ''): Media
+    public function toMediaCollection(string $collectionName = 'default', string $diskName = '', string $tableName = ''): Media
     {
         $sanitizedFileName = ($this->fileNameSanitizer)($this->fileName);
         $fileName = app(config('media-library.file_namer'))->originalFileName($sanitizedFileName);
@@ -295,6 +295,10 @@ class FileAdder
         $mediaClass = config('media-library.media_model');
         /** @var \Spatie\MediaLibrary\MediaCollections\Models\Media $media */
         $media = new $mediaClass();
+
+        if(!empty($tableName)){
+            $media->setTable($tableName);
+        }
 
         $media->name = $this->mediaName;
 
