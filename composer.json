@@ -12,6 +12,8 @@
         "cms",
         "laravel"
     ],
+    "homepage": "https://github.com/PavelPaliy/laravel-medialibrary",
+    "license": "MIT",
     "authors": [
         {
             "name": "Freek Van der Herten",
@@ -20,7 +22,6 @@
             "role": "Developer"
         }
     ],
-    "homepage": "https://github.com/spatie/laravel-medialibrary",
     "require": {
         "php": "^8.0",
         "ext-exif": "*",
