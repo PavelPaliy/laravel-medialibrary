@@ -11,7 +11,7 @@ In this video, you'll see the various option on how to customize the look and fe
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/eSRUY6RTtug" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-Want to see more videos like this? Check out our [free video course on how to use Laravel Media Library](https://spatie.be/videos/discovering-laravel-media-library).
+Want to see more videos like this? Check out our [free video course on how to use Laravel Media Library](https://spatie.be/courses/discovering-laravel-media-library).
 
 ### Option 1: Use your own Tailwind CSS configuration
 
@@ -20,11 +20,9 @@ Instead of importing/linking the pre-built `dist/styles.css` from the package, y
 ```css
 /* app.css */
 
-@tailwind base;
-
-@tailwind components;
-
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 @import "../../vendor/spatie/laravel-medialibrary-pro/resources/js/media-library-pro-styles/src/styles.css";
 …
